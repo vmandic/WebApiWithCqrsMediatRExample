@@ -1,6 +1,6 @@
 # CQRS + MediatR web API example
 
-I am building this example as explaind on code-maze.com to learn more about CQRS and MediatR working together.
+I am building this example as explained on code-maze.com to learn more about CQRS and MediatR working together. Source: <https://code-maze.com/cqrs-mediatr-in-aspnet-core>
 
 ## Observations
 
