@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MediatR;
+using WebApiWithCqrsMediatRExample.Behaviors;
 
 namespace WebApiWithCqrsMediatRExample
 {
@@ -21,6 +22,7 @@ namespace WebApiWithCqrsMediatRExample
         {
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
+            services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddSingleton<FakeDataStore>();
         }
 

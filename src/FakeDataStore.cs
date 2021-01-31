@@ -25,5 +25,11 @@ namespace WebApiWithCqrsMediatRExample
         {
             return _values;
         }
+
+        public void EventOccured(string value, string evt)
+        {
+            var indexOfValue = _values.FindIndex(val => val.StartsWith(value));
+            _values[indexOfValue] = $"{_values[indexOfValue]}, event: {evt}";
+        }
     }
 }

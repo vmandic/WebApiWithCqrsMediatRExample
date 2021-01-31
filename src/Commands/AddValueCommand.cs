@@ -1,4 +1,7 @@
+using System.Threading;
+using System.Threading.Tasks;
 using MediatR;
+using WebApiWithCqrsMediatRExample.Notifications;
 
 namespace WebApiWithCqrsMediatRExample.Commands
 {
@@ -14,18 +17,21 @@ namespace WebApiWithCqrsMediatRExample.Commands
             public string Value { get; }
         }
 
-        public class Handler : RequestHandler<Command>
+        public class Handler : AsyncRequestHandler<Command>
         {
             private readonly FakeDataStore _db;
+            private readonly IMediator _mediator;
 
-            public Handler(FakeDataStore db)
+            public Handler(FakeDataStore db, IMediator mediator)
             {
                 _db = db;
+                _mediator = mediator;
             }
 
-            protected override void Handle(Command request)
+            protected override async Task Handle(Command request, CancellationToken cancelationToken)
             {
                 _db.AddValue(request.Value);
+                await _mediator.Publish(new ValueAddedNotification(request.Value));
             }
         }
     }
