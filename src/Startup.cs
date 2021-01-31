@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MediatR;
 
 namespace WebApiWithCqrsMediatRExample
 {
@@ -19,6 +20,8 @@ namespace WebApiWithCqrsMediatRExample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMediatR(typeof(Startup));
+            services.AddSingleton<FakeDataStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
