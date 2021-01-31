@@ -10,6 +10,7 @@ I am building this example as explaind on code-maze.com to learn more about CQRS
 - notifications can not be seamlessly ordered which is obviously by design, but still I'd like an option for that
 - I did not try this, but I guess one can implement behaviors for targeted only handlers. ie. specific behaviors
 - the behavior pipeline is the same as dotnet HTTP pipeline which makes it easy to understand
+- I am super unsure how to organize code in multi project scenarios, eg. DDD Clean architecture templates... but guess I'll have to learn more, eg. @ardalis has an amazing attribution for it on his github
 
 ## Conclusion
 
