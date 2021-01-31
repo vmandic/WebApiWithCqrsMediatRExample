@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WebApiWithCqrsMediatRExample.Commands;
 using WebApiWithCqrsMediatRExample.Queries;
 
 namespace WebApiWithCqrsMediatRExample
@@ -33,7 +34,10 @@ namespace WebApiWithCqrsMediatRExample
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value) { }
+        public async Task Post([FromBody] string value) 
+        {
+            await _mediator.Send(new AddValueCommand.Command(value));
+        }
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
